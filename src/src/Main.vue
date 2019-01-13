@@ -7,10 +7,9 @@
       <b-navbar-nav>
         <b-nav-item @click="logout">Logout</b-nav-item>
       </b-navbar-nav>
-
       <b-navbar-nav class="ml-auto">
         <b-nav-item>
-          <span>Date</span>
+          <span>{{ date | filterDate }}</span>
         </b-nav-item>
       </b-navbar-nav>
     </b-collapse>
@@ -35,15 +34,27 @@
 </template>
 
 <script>
+import moment from 'moment'
+
 export default {
   name: 'Main',
   data () {
     return {
+      date: null
     }
   },
   methods: {
     logout () {
       this.$api.pmfa('ws_user', 'logout', [])
+    }
+  },
+  created () {
+    this.date = new Date()
+    setInterval(() => { this.date = new Date() }, 1000)
+  },
+  filters: {
+    filterDate: function (date) {
+      return moment(date).format('ddd[,] Do MMM YYYY[,] HH:mm:ss')
     }
   }
 }
