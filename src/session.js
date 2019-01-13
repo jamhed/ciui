@@ -4,12 +4,22 @@ export default class Session {
   constructor () {
     this.vm = new Vue({
       data: {
-        auth: false
+        auth: false,
+        user: {}
       }
+    })
+    this.vm.$bus.$on('user-auth', (user) => {
+      this.vm.auth = true
+      this.vm.user = user
+    })
+    this.vm.$bus.$on('user-logout', () => {
+      this.vm.auth = false
+      this.vm.user = {}
     })
   }
 
   isAuth () { return this.vm.auth }
+  user () { return this.vm.user }
 
   guessWs () {
     let proto = window.location.protocol === 'http:' ? 'ws://' : 'wss://'

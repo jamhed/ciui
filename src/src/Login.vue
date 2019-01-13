@@ -2,11 +2,6 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-5">
-      <div class="row">
-        <div class="col">
-          <h2>Login:</h2>
-        </div>
-      </div>
       <div class="form-signin">
         <div class="form-group">
           <label for="inputLogin">Name:</label>
@@ -22,7 +17,7 @@
         </div>
         <div class="row justify-content-end">
           <div class="col-auto">
-            <button class="btn btn-primary pointer" type="submit">Login</button>
+            <button @click="onLoginClick" class="btn btn-primary pointer" type="submit">Login</button>
           </div>
         </div>
       </div>
@@ -42,6 +37,9 @@ export default {
     }
   },
   methods: {
+    onLoginClick () {
+      this.$api.pmfa('ws_user', 'login', [this.login, this.password])
+    }
   },
   created () {
   }
