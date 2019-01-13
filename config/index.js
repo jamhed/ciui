@@ -3,6 +3,7 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 
 const path = require('path')
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   dev: {
@@ -72,5 +73,11 @@ module.exports = {
     // `npm run build --report`
     // Set to `true` or `false` to always turn it on or off
     bundleAnalyzerReport: process.env.npm_config_report
-  }
+  },
+
+  plugins: [
+    new CopyWebpackPlugin([{
+      from: 'src/config.js', to: 'config.js'
+    }])
+  ]
 }
