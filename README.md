@@ -1,8 +1,10 @@
-# ciui
+# Erl CI
 
-> ErlCI UI
+Complementary project to provide UI for Erl CI.
 
-## Build Setup
+## 
 
 ``` bash
+yarn install
+yarn run dev
 ```
