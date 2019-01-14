@@ -37,7 +37,6 @@ new Vue({
   },
   methods: {
     chooseApp () {
-      console.log('choose', this.$session.user())
       if (!this.$session.isAuth()) {
         this.app = 'login'
       } else {
