@@ -5,6 +5,7 @@
     <b-navbar-brand to="/">{{ userName() }}</b-navbar-brand>
     <b-collapse is-nav id="nav_collapse">
       <b-navbar-nav>
+        <b-nav-item to="/profile">Profile</b-nav-item>
         <b-nav-item @click="logout">Logout</b-nav-item>
       </b-navbar-nav>
       <b-navbar-nav class="ml-auto">
@@ -16,7 +17,7 @@
   </b-navbar>
 
   <div>
-    <transition name="app" mode="out-in">
+    <transition name="main" mode="out-in">
       <router-view></router-view>
     </transition>
   </div>
@@ -35,9 +36,18 @@
 
 <script>
 import moment from 'moment'
+import VueRouter from 'vue-router'
+import Profile from '@/src/Profile'
+
+const router = new VueRouter({
+  routes: [
+    { path: '/profile', component: Profile }
+  ]
+})
 
 export default {
   name: 'Main',
+  router,
   data () {
     return {
       date: null
