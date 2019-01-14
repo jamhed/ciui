@@ -20,6 +20,7 @@ export default class Session {
 
   isAuth () { return this.vm.auth }
   user () { return this.vm.user }
+  role () { return this.vm.user.role }
 
   guessWs () {
     let proto = window.location.protocol === 'http:' ? 'ws://' : 'wss://'
