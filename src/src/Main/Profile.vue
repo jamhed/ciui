@@ -1,11 +1,15 @@
 <template>
 <b-container>
-  <div class="form">
-    <div style="margin-top:20px">
-      <button @click="onCommit" class="btn btn-primary pointer">Commit</button>
-      <button @click="onCancel" class="btn btn-outline-primary float-right pointer">Cancel</button>
-    </div>
-  </div>
+  <b-row>
+    <b-col>
+      <div class="form">
+        <div style="margin-top:20px">
+          <button @click="onCommit" class="btn btn-primary pointer">Commit</button>
+          <button @click="onCancel" class="btn btn-outline-primary float-right pointer">Cancel</button>
+        </div>
+      </div>
+    </b-col>
+  </b-row>
 </b-container>
 </template>
 

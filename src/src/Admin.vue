@@ -2,9 +2,10 @@
 <div style="min-height: 100%">
   <b-navbar class="navbar-custom fixed-top" toggleable="md" type="dark" variant="info">
     <b-nav-toggle target="nav_collapse"></b-nav-toggle>
-    <b-navbar-brand to="/command">{{ userName() }}</b-navbar-brand>
+    <b-navbar-brand to="/">{{ userName() }}</b-navbar-brand>
     <b-collapse is-nav id="nav_collapse">
       <b-navbar-nav>
+        <b-nav-item to="/users">Users</b-nav-item>
         <b-nav-item @click="logout">Logout</b-nav-item>
       </b-navbar-nav>
       <b-navbar-nav class="ml-auto">
@@ -16,7 +17,7 @@
   </b-navbar>
 
   <div>
-    <transition name="main" mode="out-in">
+    <transition name="admin" mode="out-in">
       <router-view></router-view>
     </transition>
   </div>
@@ -34,38 +35,27 @@
 </template>
 
 <script>
-import moment from 'moment'
+import Base from '@/src/Base'
 import VueRouter from 'vue-router'
+
+import Users from '@/src/Admin/Users'
 
 const router = new VueRouter({
   routes: [
+    { path: '/users', component: Users },
+    { path: '/', redirect: '/users' }
   ]
 })
 
 export default {
   name: 'Admin',
   router,
+  mixins: [Base],
   data () {
     return {
-      date: null
     }
   },
   methods: {
-    userName () {
-      return this.$session.user()['name']
-    },
-    logout () {
-      this.$api.pmfa('ws_user', 'logout', [])
-    }
-  },
-  created () {
-    this.date = new Date()
-    setInterval(() => { this.date = new Date() }, 1000)
-  },
-  filters: {
-    filterDate: function (date) {
-      return moment(date).format('ddd[,] Do MMM YYYY[,] HH:mm:ss')
-    }
   }
 }
 </script>
