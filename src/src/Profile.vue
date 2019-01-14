@@ -1,10 +1,12 @@
 <template>
-<div class="form">
-  <div style="margin-top:20px">
-    <button @click="onCommit" class="btn btn-primary pointer">Commit</button>
-    <button @click="onCancel" class="btn btn-outline-primary float-right pointer">Cancel</button>
+<b-container>
+  <div class="form">
+    <div style="margin-top:20px">
+      <button @click="onCommit" class="btn btn-primary pointer">Commit</button>
+      <button @click="onCancel" class="btn btn-outline-primary float-right pointer">Cancel</button>
+    </div>
   </div>
-</div>
+</b-container>
 </template>
 
 <script>
@@ -23,7 +25,7 @@ export default {
     },
     onCommit: async function () {
       try {
-        await this.$api.pmfa('ws_agent', 'update', [this.user])
+        await this.$api.pmfa('ws_user', 'update', [this.user])
         this.$router.go(-1) // eslint-disable-next-line
       }
       catch (error) {

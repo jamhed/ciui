@@ -2,7 +2,7 @@
 <div style="min-height: 100%">
   <b-navbar class="navbar-custom fixed-top" toggleable="md" type="dark" variant="info">
     <b-nav-toggle target="nav_collapse"></b-nav-toggle>
-    <b-navbar-brand to="/">{{ userName() }}</b-navbar-brand>
+    <b-navbar-brand to="/command">{{ userName() }}</b-navbar-brand>
     <b-collapse is-nav id="nav_collapse">
       <b-navbar-nav>
         <b-nav-item to="/profile">Profile</b-nav-item>
@@ -38,10 +38,12 @@
 import moment from 'moment'
 import VueRouter from 'vue-router'
 import Profile from '@/src/Profile'
+import Command from '@/src/Command'
 
 const router = new VueRouter({
   routes: [
-    { path: '/profile', component: Profile }
+    { path: '/profile', component: Profile },
+    { path: '/command', component: Command }
   ]
 })
 
