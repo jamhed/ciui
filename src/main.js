@@ -52,7 +52,7 @@ new Vue({
   },
   created () {
     this.$bus.$on('user-auth', (Auth) => this.chooseApp())
-    this.$bus.$on('user-logout', () => window.location.reload())
+    this.$bus.$on('user-logout', () => this.chooseApp())
     this.chooseApp()
   }
 })
