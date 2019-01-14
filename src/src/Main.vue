@@ -2,7 +2,7 @@
 <div style="min-height: 100%">
   <b-navbar class="navbar-custom fixed-top" toggleable="md" type="dark" variant="info">
     <b-nav-toggle target="nav_collapse"></b-nav-toggle>
-    <b-navbar-brand to="/">User</b-navbar-brand>
+    <b-navbar-brand to="/">{{ userName() }}</b-navbar-brand>
     <b-collapse is-nav id="nav_collapse">
       <b-navbar-nav>
         <b-nav-item @click="logout">Logout</b-nav-item>
@@ -44,6 +44,9 @@ export default {
     }
   },
   methods: {
+    userName () {
+      return this.$session.user()['name']
+    },
     logout () {
       this.$api.pmfa('ws_user', 'logout', [])
     }

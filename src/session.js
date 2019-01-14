@@ -8,9 +8,9 @@ export default class Session {
         user: {}
       }
     })
-    this.vm.$bus.$on('user-auth', (user) => {
+    this.vm.$bus.$on('user-auth', (data) => {
       this.vm.auth = true
-      this.vm.user = user
+      this.vm.user = data.user
     })
     this.vm.$bus.$on('user-logout', () => {
       this.vm.auth = false
